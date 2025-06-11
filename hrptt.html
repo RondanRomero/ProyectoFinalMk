@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personajes de Harry Potter</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+
+    :root {
+      --primary-color: #f70404;
+      --secondary-color: #EFF6E0;
+      --terceary-color: #598392;
+    }
+
+
+    body {
+      background-color: var(--primary-color);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+    }
+
+
+    header {
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      background-color: var(--secondary-color);
+      gap: 10px;
+    }
+
+
+    .search {
+      background-color: transparent;
+      border: 5px solid var(--terceary-color);
+      border-radius: 50px;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 15px;
+      padding: 10px 16px;
+      color: var(--primary-color);
+    }
+
+
+    .search::placeholder {
+      color: var(--terceary-color);
+    }
+
+
+    .search:focus {
+      outline: none;
+      background-color: var(--primary-color);
+      color: var(--secondary-color);
+    }
+
+
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+
+
+    .movie {
+      width: 300px;
+      margin: 15px;
+      background-color: var(--secondary-color);
+      box-shadow: 0 5px 5px black;
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+
+
+    .movie img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      display: block;
+    }
+
+
+    .fallback-text {
+      width: 100%;
+      height: 400px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background-color: #333;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      text-align: center;
+    }
+
+
+    .movie-info {
+      color: var(--terceary-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 4px;
+      padding: 8px 15px 15px;
+      letter-spacing: 1px;
+    }
+
+
+    .movie-info h3 {
+      margin: 0;
+    }
+
+
+    .movie-info span {
+      background-color: var(--primary-color);
+      padding: 5px 8px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+
+    .movie-info span.red {
+      color: rgb(255, 136, 57);
+    }
+
+
+    .movie-info span.yellow {
+      color: yellow;
+    }
+
+
+    .movie-info span.blue {
+      color: blue;
+    }
+
+
+    .movie-info span.green {
+      color: green;
+    }
+
+
+    .overview {
+      background-color: #fff;
+      padding: 32px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      max-height: 100%;
+      transform: translateY(101%);
+      overflow-y: auto;
+      transition: transform 0.3s ease-in;
+    }
+
+
+    .movie:hover .overview {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+ <button> <a href="rymp.html"></a></button>
+  <header>
+    <img src="C:\Users\Admin\Downloads\spiderman.png" alt="logo" style="height: 50px;" />
+    <form id="form">
+      <input type="text" id="search" class="search" placeholder="Busca tu personaje" />
+    <buttton> <a href="hrptt.html"> Back </a></buttton></form>
+  </header>
+  <main id="main"></main>
+
+
+  <script>
+    const API_HP = 'https://hp-api.onrender.com/api/characters';
+    const API_RM = 'https://rickandmortyapi.com/api/character';
+    const main = document.getElementById('main');
+    const form = document.getElementById('form');
+    const search = document.getElementById('search');
+
+
+    let allCharacters = [];
+
+
+    async function getAllCharacters() {
+      try {
+        const [hpRes, rmRes] = await Promise.all([fetch(API_HP), fetch(API_RM)]);
+        const hpData = await hpRes.json();
+        const rmData = await rmRes.json();
+
+
+        const hpCharacters = hpData.map((char) => ({
+          name: char.name,
+          image: char.image || '',
+          origin: 'Harry Potter',
+          extra: char.house || 'Sin casa',
+        }));
+
+
+        const rmCharacters = rmData.results.map((char) => ({
+          name: char.name,
+          image: char.image || '',
+          origin: 'Rick and Morty',
+          extra: char.species,
+        }));
+
+
+        allCharacters = [...hpCharacters, ...rmCharacters];
+        showCharacters(allCharacters);
+      } catch (error) {
+        console.error('Error cargando personajes:', error);
+        main.innerHTML = '<p style="color: white; text-align:center;">No se pudieron cargar los personajes.</p>';
+      }
+    }
+
+
+    function showCharacters(characters) {
+      main.innerHTML = '';
+
+
+      characters.forEach(({ name, image, origin, extra }) => {
+        const movieElement = document.createElement('div');
+        movieElement.classList.add('movie');
+
+
+     
+        const img = document.createElement('img');
+        img.src = image;
+        img.alt = name;
+
+
+       
+        const fallback = document.createElement('div');
+        fallback.className = 'fallback-text';
+        fallback.textContent = 'Imagen no disponible';
+
+
+        img.onerror = () => {
+          img.style.display = 'none';
+          fallback.style.display = 'flex';
+        };
+
+
+       
+        movieElement.appendChild(img);
+        movieElement.appendChild(fallback);
+
+
+       
+        const infoDiv = document.createElement('div');
+        infoDiv.classList.add('movie-info');
+
+
+        const h3 = document.createElement('h3');
+        h3.textContent = name;
+
+
+        const span = document.createElement('span');
+        span.className = getClassByOrigin(origin, extra);
+        span.textContent = origin;
+
+
+        infoDiv.appendChild(h3);
+        infoDiv.appendChild(span);
+
+
+        movieElement.appendChild(infoDiv);
+
+
+        // Overview
+        const overviewDiv = document.createElement('div');
+        overviewDiv.classList.add('overview');
+
+
+        const overviewTitle = document.createElement('h3');
+        overviewTitle.textContent = 'Información';
+
+
+        const overviewText = document.createElement('p');
+        overviewText.textContent =
+          origin === 'Harry Potter' ? `Casa: ${extra}` : `Especie: ${extra}`;
+
+
+        overviewDiv.appendChild(overviewTitle);
+        overviewDiv.appendChild(overviewText);
+
+
+        movieElement.appendChild(overviewDiv);
+
+
+        main.appendChild(movieElement);
+      });
+    }
+
+
+    // Clasifica el color por casa o serie
+    function getClassByOrigin(origin, extra) {
+      if (origin === 'Harry Potter') {
+        switch (extra) {
+          case 'Gryffindor':
+            return 'red';
+          case 'Hufflepuff':
+            return 'yellow';
+          case 'Ravenclaw':
+            return 'blue';
+          case 'Slytherin':
+            return 'green';
+          default:
+            return '';
+        }
+      } else if (origin === 'Rick and Morty') {
+        return 'blue';
+      }
+      return '';
+    }
+
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const searchTerm = search.value.trim().toLowerCase();
+
+
+      if (searchTerm) {
+        const filtered = allCharacters.filter((char) =>
+          char.name.toLowerCase().includes(searchTerm)
+        );
+        showCharacters(filtered);
+        search.value = '';
+      } else {
+        showCharacters(allCharacters);
+      }
+    });
+
+
+    getAllCharacters();
+  </script>
+</body>
+</html>
