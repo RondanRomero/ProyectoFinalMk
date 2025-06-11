@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
         <link href="https://fonts.cdnfonts.com/css/break-love" rel="stylesheet">
         <link href="https://fonts.cdnfonts.com/css/jomolhari-2" rel="stylesheet">
-    <title>Salazar Abner</title>
+    <title>Rondan Romero</title>
 </head>
 <body>
 
