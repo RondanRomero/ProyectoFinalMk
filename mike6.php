@@ -124,12 +124,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="nav navbar-nav">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown"
+        <a class="nav-link dropdown-toggle" href="index.html" id="navbarDropdownMenuLink" data-toggle="dropdown"
         aria-haspopup="true" aria-expanded="false" style="color: black;">
           Unidad 1
         </a>
          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-           <li><a href="mk.html">practica 1</a></li>
+           <li><a href="index.html">practica 1</a></li>
               <li><a href="mike2.php">practica 2</a></li>
               <li><a href="mike3.php">practica 3</a></li>
          </div>
