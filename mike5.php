@@ -106,12 +106,12 @@ ob_start();
          <div class="collapse navbar-collapse" id="navbarNavDropdown">
          <ul class="nav navbar-nav">
            <li class="nav-item dropdown">
-             <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+             <a class="nav-link dropdown-toggle" href="index.html" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                Unidad 1
              </a>
           
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="mk.html">practica 1</a><br>
+              <a class="dropdown-item" href="index.html">practica 1</a><br>
               <a class="dropdown-item" href="mike2.php">practica 2</a><br>
               <a class="dropdown-item" href="mike3.php">practica 3</a><br>
               </div>
