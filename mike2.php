@@ -25,7 +25,7 @@
           Unidad 1
         </a>
          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <li><a href="mk.html">practica 1</a></li><br>
+          <li><a href="index.html">practica 1</a></li><br>
               <li><a href="mike2.php">practica 2</a></li><br>
               <li><a href="mike3.php">practica 3</a></li><br>
          </div>
