@@ -104,7 +104,7 @@ ob_start();
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: black;">Unidad 1 <span class="caret"></span></a>
             <ul class="dropdown-menu">
-             <li><a href="idnex.html">practica 1</a></li>
+               <li><a href="index.html">practica 1</a></li>
               <li><a href="mike2.php">practica 2</a></li>
               <li><a href="mike3.php">practica 3</a></li>
             </ul>
