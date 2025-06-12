@@ -97,14 +97,14 @@ ob_start();
 <body>
   <nav class="navbar navbar-light" style="background-color: rgb(191, 196, 201);">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#" style="color: rgb(0, 15, 150);">Inicio</a>
+      <a class="navbar-brand" href="index.html" style="color: rgb(0, 15, 150);">Inicio</a>
 
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="nav navbar-nav">
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: black;">Unidad 1 <span class="caret"></span></a>
             <ul class="dropdown-menu">
-             <li><a href="mk.html">practica 1</a></li>
+             <li><a href="idnex.html">practica 1</a></li>
               <li><a href="mike2.php">practica 2</a></li>
               <li><a href="mike3.php">practica 3</a></li>
             </ul>
